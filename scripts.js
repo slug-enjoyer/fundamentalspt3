@@ -44,12 +44,51 @@
 //will need to get user input, find the last character in the string, determine if its a letter,
 //if it is not a letter it needs to icrement and then go to the next character until it finds
 //a letter, and finally output that letter to the console.log
+// let userString2 = prompt("Please type a short string of words");
+
+// function lastLetter (usrStr){
+// // Finds the last character of the string and puts it in variable endChar
+//     let endChar = usrStr.charAt(usrStr.length- 1);
+
+// // This part checks the regular expression that contains all letters in the alphabet against 
+// // the endChar to make sure it is a letter and not a symbol or letter
+//     if (/^[a-zA-Z]$/.test(endChar)){ 
+//         return endChar;
+//     }
+// //if the test fails, we go back to the string and check the next character until we find a letter    
+//     else{
+        
+//     }
+// }
+
+// console.log(lastLetter(userString2));
+
 let userString2 = prompt("Please type a short string of words");
 
 function lastLetter (usrStr){
-    let intLetterPosition = usrStr.length - 1;
-    let endChar = usrStr.slice(intLetterPosition);
-    return endChar;
+// Finds the last character of the string and puts it in variable endChar
+// sets the variable endCharPosition as the end character position number
+    let endCharPosition = usrStr.length - 1; 
+    let endChar = usrStr.charAt(endCharPosition - 1);
+// this while loop will stay true as long as a letter is not found. this way it will keep
+// decrementing the position variable until the position is on a letter, then it will end
+// and continue on to the rest of the function. it also knows to end if it reaches the
+// beginning of the string, ie no letters found
+    while (!/[a-zA-Z]/.test(endChar) && endCharPosition >= 0){
+        endCharPosition--;
+        endChar = usrStr.charAt(endCharPosition);
+    }
+
+// This part checks the regular expression that contains all letters in the alphabet against 
+// the endChar to make sure it is a letter and not a symbol or letter
+    if (/^[a-zA-Z]$/.test(endChar)){ 
+        return endChar;
+    }
+//if the test fails, we go back to the string and check the next character until we find a letter    
+    else{
+        return "no letters found";
+    }
 }
 
 console.log(lastLetter(userString2));
+
